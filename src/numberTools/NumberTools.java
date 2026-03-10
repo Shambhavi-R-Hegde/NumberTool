@@ -30,9 +30,9 @@ public class NumberTools {
 			 		System.out.println("The reversed number is : "+ reverseNumber(n));
 			 		break;
 			 	case 4 :
-			 		System.out.println("Enter 2 numbers to find their sum");
+			 		System.out.println("Enter a number to find their sum of digits");
 			 		int n1=sc.nextInt();
-			 		System.out.println("The sum of 2 numbers is : "+ sumOfDigits(n1));
+			 		System.out.println("The sum of digits is : "+ sumOfDigits(n1));
 			 		break;
 			 	case 5:
 			 		System.out.println("Enter a number to check if it is a palindrome");
@@ -40,12 +40,22 @@ public class NumberTools {
 			 		System.out.println("Is the number palindrome? "+ isPalindrome(num));
 			 		break;
 			 	case 6 :
+			 		System.out.println("Enter a number to check if it is a prime");
+			 		int inpNumber=sc.nextInt();
+			 		System.out.println("Is the number Prime? : "+ isPrime(inpNumber));
+			 		break;
+			 	case 7 : 
+			 		System.out.println("Enter a number to count the number of digits in it");
+			 		int countNum=sc.nextInt();
+			 		System.out.println("Number of Digits in the number is : "+ countDigits(countNum));
+			 		break;
+			 	case 8 :
 			 		System.out.println("Exiting the Number Tool...");
 			 		break;
 			 	default :
 			 		System.out.println("Invalid choice! Please try again.");
 			 }
-		 }while(choice !=6);
+		 }while(choice !=8);
 		 sc.close();
 
 	}
@@ -57,17 +67,15 @@ public class NumberTools {
 		System.out.println("3. Reverse a Number");
 		System.out.println("4. Sum of Digits");
 		System.out.println("5. Palindrome Check");
-		System.out.println("6. Exit");
+		System.out.println("6. Prime Number Check");
+		System.out.println("7. Count number of digits in a number");
+		System.out.println("8. Exit");
 		
 		System.out.println("\nPlease select a program from above");
 	}
 	
 	public static boolean isEven(int number) {
-		if(number%2==0) {
-			return true;
-		}else {
-			return false;
-		}
+		return number%2==0;
 	}
 	
 	public static int findMax(int num1, int num2) {
@@ -104,6 +112,30 @@ public class NumberTools {
 			n=n/10;
 		}
 		return original==reverse;
+	}
+	
+	public static boolean isPrime(int n) {
+		if(n<=1) {
+			return false;
+		}
+		for(int i=2;i<n;i++) {
+			if(n%i==0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static int countDigits(int number) {
+		if(number==0) {
+			return 1;
+		}
+		int count=0;
+		while(number!=0) {
+			number=number/10;
+			count++;
+		}
+		return count;
 	}
 
 }
